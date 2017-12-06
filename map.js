@@ -23,16 +23,37 @@ function initMap() {
 
   var iconBase = 'https://cdn-images-1.medium.com/fit/c/72/72/1*21SNEVQgVb0q2Q8g1Xbkjg.png';
   // Create markers.
-  console.log(features)
   features.map_items.forEach(function(feature) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(feature.latitude, feature.longitude),
       icon: iconBase,
       map: map
     });
+
+    var letterLinks = '<ul>'
+    feature.letters.forEach(function(letter) {
+        letterLink = '<li style="list-style:none;padding:5px;list-style-image:https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/news-512.png"><a style="font-size:14px;" href=' + letter.url + '>' + letter.Headline + '</a>  -  by ' + letter.Author + '</li>'
+        letterLinks = letterLinks + letterLink
+    });
+    letterLinks = letterLinks + '</ul>'
+
+
+    var contentString = '<div id="content">'+
+            '<h1> Letters Published Near Here '+
+            '</h1>'+
+            '<div>'+
+            letterLinks +
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
     marker.addListener('click', function() {
     	map.setZoom(8);
     	map.setCenter(marker.getPosition());
+    	infowindow.open(map, marker);
   	});
   });
 }
