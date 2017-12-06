@@ -1,0 +1,9 @@
+name: resistbot_map
+dependencies:
+- python=2
+- numpy
+- matplotlib
+- pandas
+- pip
+- pip:
+    - pygeocoder
