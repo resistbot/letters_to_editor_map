@@ -7,12 +7,26 @@ function initMap() {
     mapTypeId: 'roadmap'
   });
 
+  var features = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': 'data.json',
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+  })();
+
   var iconBase = 'https://cdn-images-1.medium.com/fit/c/72/72/1*21SNEVQgVb0q2Q8g1Xbkjg.png';
   // Create markers.
   console.log(features)
-  features.forEach(function(feature) {
+  features.map_items.forEach(function(feature) {
     var marker = new google.maps.Marker({
-      position: getCoordinatesFor(feature.zipcode),
+      position: new google.maps.LatLng(feature.latitude, feature.longitude),
       icon: iconBase,
       map: map
     });
