@@ -7,6 +7,7 @@
 1. Move that csv into the resistbot-map directory.
 1. Rename that csv 'data.csv'
 1. Navigate to resistbot-map repo
+1. On your command line, run ```conda env create resistbot_map```
 1. On your command line, run ```source activate resistbot_map```
 1. On your command line, run ```python data.py```
 1. On your command line, run ```python -m SimpleHTTPServer 8000```
