@@ -41,7 +41,7 @@ for key, value in grouped.iteritems():
 
         if index % 5 == 0:
             print "Waiting for geocode api..."
-            time.sleep(2)
+            time.sleep(4)
     print item['latitude']
     print item['longitude']
 
