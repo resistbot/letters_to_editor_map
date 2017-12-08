@@ -1,10 +1,7 @@
 var map;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: new google.maps.LatLng(40.1280231,-101.1993017),
-    styles: [
+  var mapStyle = [
     {
         "featureType": "administrative",
         "elementType": "labels.text.fill",
@@ -84,7 +81,31 @@ function initMap() {
         ]
     }
     ]
+
+  contiguousMap = new google.maps.Map(document.getElementById('contiguous_map'), {
+    zoom: 5,
+    center: new google.maps.LatLng(38.1280231,-95.1993017),
+    styles: mapStyle
   });
+  markupMapFor(contiguousMap);
+
+  alaskaMap = new google.maps.Map(document.getElementById('alaska_map'), {
+    zoom: 4,
+    center: new google.maps.LatLng(64.0000, -150.0000),
+    styles: mapStyle
+  });
+  markupMapFor(alaskaMap);
+
+  hawaiiMap = new google.maps.Map(document.getElementById('hawaii_map'), {
+    zoom: 6,
+    center: new google.maps.LatLng(20.3114, -157.1264),
+    styles: mapStyle
+  });
+  markupMapFor(hawaiiMap);
+
+}
+
+function markupMapFor(map) {
 
   var features = (function () {
     var json = null;
@@ -109,9 +130,9 @@ function initMap() {
       map: map
     });
 
-    var letterLinks = '<ul>'
+    var letterLinks = '<ul style="padding-left:-10px;">'
     feature.letters.forEach(function(letter) {
-        letterLink = '<li style="list-style:none;padding:5px;list-style-image:https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/news-512.png"><a style="font-size:14px;" href=' + letter.url + '>' + letter.Headline + '</a>  -  by ' + letter.Author + '</li>'
+        letterLink = '<li style="list-style:none;padding-top:5px;padding-left:-10px;list-style-image:https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/news-512.png"><a style="font-size:14px;" href=' + letter.url + '>' + letter.Headline + '</a>  -  by ' + letter.Author + '</li>'
         letterLinks = letterLinks + letterLink
     });
     letterLinks = letterLinks + '</ul>'

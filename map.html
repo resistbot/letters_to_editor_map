@@ -1,8 +1,15 @@
-<link rel="stylesheet" type="text/css" href="map.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSlppaoXKPniC2D1uQSCDggn2zM2KgHcw&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSlppaoXKPniC2D1uQSCDggn2zM2KgHcw&callback=initMap">
 </script>
 <script type="text/javascript" src="map.js"></script>
-<div id="map"></div>
+<link rel="stylesheet" type="text/css" href="map.css">
+<div class="container">
+    <div id="contiguous_map" class='main-map' style="top: 5px; left: 30px; width:1350px; height:750px; float:left; margin:20px; zoom:0.8"></div>
+    <div class="insets" style="float:left; margin-top:20px;">
+    <div id="alaska_map" class='inset-map' style="top: 5px; left: 75px; width:420px; height:420px; zoom:0.8; alignment:center-horizontal;"></div>
+    <div id="hawaii_map" style="top: 15px; left: 75px; width:336px; height:240px; margin-left:-12px; alignment:center-horizontal;"></div>
+    </div>
+</div>
+
 <!-- Replace the value of the key parameter with your own API key. -->
